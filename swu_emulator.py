@@ -3424,11 +3424,17 @@ def read_res_ck_ik_2(reader_index,rand,autn):
 
 #https functions
 def https_imsi(server):
-    r = requests.get('https://' + server + '/?type=imsi', verify=False)
+    if not server.startswith('http'):
+        # Assume HTTPS if no protocol specified
+        server = 'https://' + server
+    r = requests.get(server + '/?type=imsi', verify=False)
     return r.json()['imsi']
 
 def https_res_ck_ik(server, rand, autn):
-    r = requests.get('https://' + server + '/?type=rand-autn&rand=' + rand + '&autn=' + autn, verify=False)
+    if not server.startswith('http'):
+        # Assume HTTPS if no protocol specified
+        server = 'https://' + server
+    r = requests.get(server + '/?type=rand-autn&rand=' + rand + '&autn=' + autn, verify=False)
     return r.json()['res'], r.json()['ck'], r.json()['ik']
 
 
