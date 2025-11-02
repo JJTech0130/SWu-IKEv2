@@ -3521,6 +3521,13 @@ def main():
        [PRF,PRF_HMAC_SHA1],
        [INTEG,AUTH_HMAC_SHA1_96],
        [D_H,MODP_1024_bit]  
+    ],
+    [
+       [IKE,0],
+       [ENCR,ENCR_AES_CBC,[KEY_LENGTH,256]],
+       [PRF,PRF_HMAC_SHA2_256],
+       [INTEG,AUTH_HMAC_SHA2_256_128],
+       [D_H,MODP_2048_bit] 
     ]
   
     ]
